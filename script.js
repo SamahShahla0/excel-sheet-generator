@@ -27,3 +27,7 @@ const ExportToExcel = (type, fn, dl) => {
     return dl ? XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' })
         : XLSX.writeFile(wb, fn || ('MyNewSheet.' + (type || 'xlsx')))
 }
+
+document.getElementById('generateBtn').addEventListener('click', function() {
+    Swal.fire('SweetAlert2 is working!');
+  });
