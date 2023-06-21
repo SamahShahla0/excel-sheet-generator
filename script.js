@@ -16,10 +16,34 @@ const generateTable = () => {
     if(rowsNumber>0 && columnsNumber>0){
         tableExists = true
     }
+    else{
+        swal.fire({
+            title: "Generation Failed!",
+            text: "Cannot generate table with zero rows or columns!",
+            icon: "error",
+            //confirmButtonText: "close",
+            showCancelButton: false,
+            showConfirmButton: false,
+            //showCloseButton: true,
+            timer: 4000,
+            allowOutsideClick: true,
+          });
+    }
 }
 
 const ExportToExcel = (type, fn, dl) => {
     if(!tableExists){
+        swal.fire({
+            title: "Export Failed!",
+            text: "No table to Export!",
+            icon: "error",
+            //confirmButtonText: "close",
+            showCancelButton: false,
+            showConfirmButton: false,
+            //showCloseButton: true,
+            timer: 4000,
+            allowOutsideClick: true,
+          });
         return
     }
     var elt = table
@@ -28,6 +52,11 @@ const ExportToExcel = (type, fn, dl) => {
         : XLSX.writeFile(wb, fn || ('MyNewSheet.' + (type || 'xlsx')))
 }
 
-document.getElementById('generateBtn').addEventListener('click', function() {
-    Swal.fire('SweetAlert2 is working!');
-  });
+/*document.getElementById('generateBtn').addEventListener('click', function() {
+    swal.fire({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success",
+        button: "Aww yiss!",
+      });
+  });*/
